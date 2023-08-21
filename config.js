@@ -9,7 +9,7 @@ const CONFIG = {
       return this.BASE_URL.replace("/#/", "/");
    },
    HASH_ROUTER_INIT() {
-      location.replace("/#/");
+      location.replace(this.BASE_URL);
    },
 };
 
