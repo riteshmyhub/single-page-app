@@ -22,6 +22,7 @@ export default class App {
             });
             break;
          case "/todos":
+            console.log(CONFIG.BASE_URL);
             this.page = await hbs({
                path: CONFIG.VIEW_ENGINE_PAGE + "/todos/page.hbs",
                context: {},
