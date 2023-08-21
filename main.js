@@ -1,7 +1,9 @@
 import CONFIG from "./config/config.js";
+import hbs from "./functions/hbs.js";
+//import hbs from "./functions/hbs.js";
 
 CONFIG.HASH_ROUTER_INIT();
-console.log(CONFIG.TEMPLATE_ENGINE_PATH());
+
 const root = document.getElementById("root");
 
 export default class App {
@@ -10,17 +12,30 @@ export default class App {
       this.routes();
       window.addEventListener("hashchange", this.routes);
    }
-   routes = () => {
+   routes = async () => {
       let url = new URL(CONFIG.BASE_URL);
       switch (url.pathname) {
          case "/":
-            this.page = `<a href="#/dd">home page work!</a>`;
+            this.page = await hbs({
+               path: CONFIG.VIEW_ENGINE_PAGE + "/home/page.hbs",
+               context: {},
+            });
+            break;
+         case "/todos":
+            this.page = await hbs({
+               path: CONFIG.VIEW_ENGINE_PAGE + "/todos/page.hbs",
+               context: {},
+            });
             break;
          default:
-            this.page = `<a href="#/">404 page work!</a>`;
+            this.page = await hbs({
+               path: CONFIG.VIEW_ENGINE_PAGE + "/404/page.hbs",
+               context: {},
+            });
             break;
       }
       root.innerHTML = this.page;
+      console.log(document.getElementById("form"));
    };
 }
 

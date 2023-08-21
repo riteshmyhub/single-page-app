@@ -8,8 +8,11 @@ const CONFIG = {
          return location.href.replace("/#/", "/");
       }
    },
-   TEMPLATE_ENGINE_PATH() {
-      return this.BASE_URL;
+   get VIEW_ENGINE_PAGE() {
+      return new URL(location.href.replace("/#/", "/")).origin + `/pages`;
+   },
+   get VIEW_ENGINE_PARTIALS() {
+      return this.VIEW_ENGINE_PAGE.replace("/pages", "/components");
    },
    HASH_ROUTER_INIT() {
       if (!location.href.includes("/#/")) {
