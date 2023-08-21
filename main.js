@@ -1,11 +1,16 @@
 import CONFIG from "./config/config.js";
 import hbs from "./functions/hbs.js";
 //import hbs from "./functions/hbs.js";
-
+console.log({
+   BASE_URL: CONFIG.BASE_URL,
+   VIEW_ENGINE_PAGE: CONFIG.VIEW_ENGINE_PAGE,
+   VIEW_ENGINE_PARTIALS: CONFIG.VIEW_ENGINE_PARTIALS,
+});
 CONFIG.HASH_ROUTER_INIT();
 
 const root = document.getElementById("root");
 
+console.log();
 export default class App {
    page;
    constructor() {
@@ -22,7 +27,6 @@ export default class App {
             });
             break;
          case "/todos":
-            console.log(CONFIG.BASE_URL);
             this.page = await hbs({
                path: CONFIG.VIEW_ENGINE_PAGE + "/todos/page.hbs",
                context: {},
