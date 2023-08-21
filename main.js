@@ -11,10 +11,7 @@ export default class App {
       window.addEventListener("hashchange", this.routes);
    }
    routes = () => {
-      let url =
-         new URL(location.href.replace("/#/", "/")) || //
-         new URL(location.href.replace("/single-page-app/#/", "/"));
-
+      let url = new URL(CONFIG.BASE_URL);
       switch (url.pathname) {
          case "/":
             this.page = `<a href="#/dd">home page work!</a>`;
