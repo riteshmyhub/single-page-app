@@ -9,7 +9,7 @@ const CONFIG = {
       }
    },
    get VIEW_ENGINE_PAGE() {
-      return new URL(location.href.replace("/#/", "/")).origin + `/pages`;
+      return new URL(location.href.replace("/#/", "/")).href + `/pages`;
    },
    get VIEW_ENGINE_PARTIALS() {
       return this.VIEW_ENGINE_PAGE.replace("/pages", "/components");
