@@ -40,7 +40,6 @@ export default class App {
             break;
       }
       root.innerHTML = this.page;
-      console.log(document.getElementById("form"));
    };
 }
 
