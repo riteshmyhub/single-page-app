@@ -3,16 +3,24 @@ const CONFIG = {
    PRODUCTION_URL: "https://riteshmyhub.github.io",
    get BASE_URL() {
       if (location.origin === this.PRODUCTION_URL) {
-         return location.href.replace(`/${this.APP_NAME}/#/`, `/${this.APP_NAME}/`);
+         return location.href.replace(`/${this.APP_NAME}/#/`, `/${this.APP_NAME}`);
       } else {
          return location.href.replace("/#/", "/");
       }
    },
    get VIEW_ENGINE_PAGE() {
-      return this.BASE_URL + `/pages`;
+      if (location.origin === this.PRODUCTION_URL) {
+         return `${location.origin}/${this.APP_NAME}/pages`;
+      } else {
+         return `${location.origin}/pages`;
+      }
    },
    get VIEW_ENGINE_PARTIALS() {
-      return this.VIEW_ENGINE_PAGE.replace("/pages", "/components");
+      if (location.origin === this.PRODUCTION_URL) {
+         return `${location.origin}/${this.APP_NAME}/components`;
+      } else {
+         return `${location.origin}/components`;
+      }
    },
    HASH_ROUTER_INIT() {
       if (!location.href.includes("/#/")) {
