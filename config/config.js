@@ -16,7 +16,7 @@ const CONFIG = {
    },
    HASH_ROUTER_INIT() {
       if (!location.href.includes("/#/")) {
-         location.replace(this.BASE_URL);
+         location.replace(this.BASE_URL + "/#/");
       }
    },
 };
