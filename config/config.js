@@ -6,10 +6,12 @@ const CONFIG = {
       return baseUrl + "/#/";
    },
    TEMPLATE_ENGINE_PATH() {
-      return this.BASE_URL.replace("/#/", "/");
+      return this.BASE_URL;
    },
    HASH_ROUTER_INIT() {
-      location.replace(this.BASE_URL);
+      if (!location.href.includes("/#/")) {
+         location.replace(this.BASE_URL);
+      }
    },
 };
 
