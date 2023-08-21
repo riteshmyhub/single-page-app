@@ -1,5 +1,5 @@
 const CONFIG = {
-   APP_NAME: "vanilla-js-curd",
+   APP_NAME: "single-page-app",
    PRODUCTION_URL: "https://riteshmyhub.github.io",
    get BASE_URL() {
       let baseUrl = location.origin === this.PRODUCTION_URL ? `${location.origin}/${this.APP_NAME}` : location.origin;
