@@ -3,7 +3,6 @@ const CONFIG = {
    PRODUCTION_URL: "https://riteshmyhub.github.io",
    get BASE_URL() {
       if (location.origin === this.PRODUCTION_URL) {
-         
          return location.href.replace(`/${this.APP_NAME}/#/`, `/`);
       } else {
          return location.href.replace("/#/", "/");

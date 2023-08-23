@@ -1,57 +1,82 @@
 {{> Navbar title='todos' }}
-<div>
-    <div>
-        <h4>New Task Todo</h4>
-        <form>
-            <div>
-                <label for="personal">
-                    <input type="radio" value="personal" name="category" id="personal" required>
-                    <span role="button">Personal</span>
-                </label>
-                <label for="teams">
-                    <input type="radio" value="teams" name="category" id="teams" required>
-                    <span role="button" class="cursor-pointer">Teams</span>
-                </label>
-            </div>
-            <div>
-                <label for="title_task" role="button">title task</label>
-                <input type="text" name="title_task" id="title_task" autocomplete="off" required>
-            </div>
-            <div>
-                <label for="discription" role="button">Discription</label>
-                <textarea name="discription" id="discription" rows="3" autocomplete="off" required></textarea>
-            </div>
-            <div>
-                <button type="submit">submit</button>
-                <button type="button" id="reset-app-btn">
-                    delete all users
-                </button>
-            </div>
-        </form>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-4">
+        <div class="p-2">
+            <h2 class="my-2">Create New Task</h2>
+            <form data-form-name="">
+                <div class="pb-2">
+                    <label role="button" class="my-2 d-block">*category</label>
+                    <label for="personal">
+                        <input type="radio" value="personal" name="category" id="personal" required>
+                        <span role="button">Personal</span>
+                    </label>
+                    <label for="teams">
+                        <input type="radio" value="teams" name="category" id="teams" required>
+                        <span role="button" class="cursor-pointer">Teams</span>
+                    </label>
+                </div>
+                <div class="py-2">
+                    <label for="title_task" role="button" class="my-2 d-block">*title task</label>
+                    <input type="text" name="title_task" id="title_task" autocomplete="off" class="text-input" required>
+                </div>
+                <div class="py-2">
+                    <label for="discription" role="button" class="my-2 d-block">*Discription</label>
+                    <textarea class="textarea" name="discription" id="discription" rows="3" autocomplete="off"
+                        required></textarea>
+                </div>
+                <div class="py-2">
+                    <button type="submit" class="t-t-u p-2">submit</button>
+                    <button type="button" class="t-t-u p-2" id="reset-app-btn" class="p-1">
+                        delete all users
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div>
-        <h4>New Task Todo</h4>
-        <ul>
-            <li>
-                <button onclick="location.replace('#/todos?status=all')">
-                    all
-                </button>
-            </li>
-            <li data-active-link="pending">
-                <button onclick="location.replace('/#/todos?status=pending')">pending</button>
-            </li>
-            <li data-active-link="done">
-                <button onclick="location.replace('/#/todos?status=done')">done</button>
-            </li>
-        </ul>
-    </div>
-    <div>
-        <div>loading...</div>
-    </div>
-    <div>
-        {{> TaskCard }}
-    </div>
-    <div>
-        <div>you don't have task in </div>
+    <div class="col-12 col-sm-12 col-md-8">
+        <div class="p-2">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="my-2">New Task Todo</h2>
+                    <ul class="tab-container">
+                        <li data-active-link="pending" class="tab list-style-none">
+                            <button class="p-1" onclick="location.replace('#/todos?status=all')">
+                                All
+                            </button>
+                        </li>
+                        <li data-active-link="pending" class="tab list-style-none">
+                            <button class="p-1" onclick="location.replace('#/todos?status=pending')">
+                                Pending
+                            </button>
+                        </li>
+                        <li data-active-link="done" class="tab list-style-none">
+                            <button class="p-1" onclick="location.replace('#/todos?status=done')">
+                                Done
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                {{#if loading}}
+                <div class="col-12">
+                    <div class="p-2 app-card my-2 text-center">loading...</div>
+                </div>
+                {{else}}
+                {{#if tasks.length}}
+                <div class="col-12">
+                    {{#each tasks as |element|}}
+                    <div class="p-2 app-card my-2" id="task-container">
+                        {{> TaskCard task=element}}
+                    </div>
+                    {{/each}}
+                </div>
+                {{else}}
+                <div class="col-12 app-card my-2">
+                    <div class="p-2">you don't have task in </div>
+                </div>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+
     </div>
 </div>

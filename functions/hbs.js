@@ -29,7 +29,6 @@ RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/Navbar.hbs`, (res) => {
 RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/TaskCard.hbs`, (res) => {
    Handlebars.registerPartial("TaskCard", res);
 });
-
 // ifEquals
 Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
    return arg1 == arg2 ? options.fn(this) : options.inverse(this);

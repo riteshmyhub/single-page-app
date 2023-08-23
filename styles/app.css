@@ -1,0 +1,27 @@
+.text-input,
+.select-input {
+   width: 100%;
+   padding: 8px 8px;
+   display: inline-block;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+}
+.textarea {
+   width: 100%;
+   padding: 8px 8px;
+   display: inline-block;
+   border: 1px solid #ccc;
+   box-sizing: border-box;
+}
+.textarea:disabled,
+.text-input:disabled,
+.select-input:disabled {
+   background: #f1f1f1 !important;
+   cursor: not-allowed;
+}
+.app-card {
+   border: 1px solid black;
+}
+.tab-container {
+   display: flex;
+}
