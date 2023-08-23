@@ -1,4 +1,4 @@
-import CONFIG from "../config/config.js";
+import CONFIG from "../config.js";
 
 export default async function hbs({ path, context }) {
    const response = await fetch(path);

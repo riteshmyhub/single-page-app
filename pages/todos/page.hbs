@@ -1,5 +1,6 @@
 {{> Navbar title='todos' }}
 <div class="row">
+    {{#if queryObj.status}}
     <div class="col-12 col-sm-12 col-md-4">
         <div class="p-2">
             <h2 class="my-2">Create New Task</h2>
@@ -37,20 +38,23 @@
         <div class="p-2">
             <div class="row">
                 <div class="col-12">
-                    <h2 class="my-2">New Task Todo</h2>
+                    <h2 class="my-2 t-t-c">{{queryObj.status}} Task List</h2>
                     <ul class="tab-container">
                         <li data-active-link="pending" class="tab list-style-none">
-                            <button class="p-1" onclick="location.replace('#/todos?status=all')">
+                            <button class="p-1 {{#ifEquals queryObj.status 'all'}}tab-active{{/ifEquals}}"
+                                onclick="location.replace('#/todos?status=all')">
                                 All
                             </button>
                         </li>
                         <li data-active-link="pending" class="tab list-style-none">
-                            <button class="p-1" onclick="location.replace('#/todos?status=pending')">
+                            <button class="p-1 {{#ifEquals queryObj.status 'pending'}}tab-active{{/ifEquals}}"
+                                onclick="location.replace('#/todos?status=pending')">
                                 Pending
                             </button>
                         </li>
                         <li data-active-link="done" class="tab list-style-none">
-                            <button class="p-1" onclick="location.replace('#/todos?status=done')">
+                            <button class="p-1 {{#ifEquals queryObj.status 'done'}}tab-active{{/ifEquals}}"
+                                onclick="location.replace('#/todos?status=done')">
                                 Done
                             </button>
                         </li>
@@ -62,11 +66,9 @@
                 </div>
                 {{else}}
                 {{#if tasks.length}}
-                <div class="col-12">
+                <div class="col-12" id="task-container">
                     {{#each tasks as |element|}}
-                    <div class="p-2 app-card my-2" id="task-container">
-                        {{> TaskCard task=element}}
-                    </div>
+                    {{> TaskCard task=element}}
                     {{/each}}
                 </div>
                 {{else}}
@@ -77,6 +79,10 @@
                 {{/if}}
             </div>
         </div>
-
     </div>
+    {{else}}
+    <div class="col-12 col-sm-12">
+        <h2>task status unavailable</h2>
+    </div>
+    {{/if}}
 </div>

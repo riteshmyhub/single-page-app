@@ -1,4 +1,4 @@
-<div class="row center-xy">
+<div class="row center-xy p-2 app-card my-2">
     <div class="col-6">
         <span>id : {{task.id}}</span>
     </div>
@@ -13,8 +13,7 @@
     </div>
     <div class="col-3">
         <span class="center-xy">
-            <input class="form-check-input" data-status-id="{{task.id}}" {{#ifEquals task.status 'done'
-                }}checked{{/ifEquals}} type="checkbox" role="switch" id="{{task.id}}">
+            <input class="form-check-input" data-status-id="{{task.id}}" {{#ifEquals task.status 'done'}}checked{{/ifEquals}} type="checkbox" role="switch" id="{{task.id}}">
             <label class="form-check-label" for="{{task.id}}">
                 &nbsp;{{task.status}}
             </label>

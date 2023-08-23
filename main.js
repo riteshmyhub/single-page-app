@@ -1,4 +1,4 @@
-import CONFIG from "./config/config.js";
+import CONFIG from "./config.js";
 import hbs from "./functions/hbs.js";
 import Storage from "./storage/storage.js";
 //import hbs from "./functions/hbs.js";
@@ -82,11 +82,17 @@ export default class App extends Storage {
             });
             break;
          case "/todos":
+            let status = url.searchParams.get("status");
             this.page = await hbs({
                path: CONFIG.VIEW_ENGINE_PAGE + "/todos/page.hbs",
                context: {
                   loading: this.loading,
-                  tasks: this.taskList,
+                  tasks: this.taskList?.filter((task) => {
+                     return status === "all" ? true : task.status === status;
+                  }),
+                  queryObj: {
+                     status: url.searchParams.get("status"),
+                  },
                },
             });
             break;
@@ -98,10 +104,17 @@ export default class App extends Storage {
             break;
       }
       root.innerHTML = this.page;
-      document.getElementsByTagName("form")[0].addEventListener("submit", this.SubmitHandler);
-      document.getElementById("task-container")?.addEventListener("click", this.DeleteByIdTask);
-      document.getElementById("task-container")?.addEventListener("click", this.EditHandler);
-      //
+      /* dom access here */
+      const taskList = document.getElementById("task-container")?.children;
+      const form = document.getElementsByTagName("form")[0];
+      form.addEventListener("submit", this.SubmitHandler);
+
+      for (let i = 0; i < taskList?.length; i++) {
+         const element = taskList[i];
+         element?.addEventListener("click", this.DeleteByIdTask);
+         element?.addEventListener("click", this.EditHandler);
+      }
+      /* dom access here */
    };
 }
 

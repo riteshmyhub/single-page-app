@@ -4,13 +4,10 @@ export default class Storage {
       dbName: "task",
    });
    refresher;
-   status = null;
    loading = false;
    taskList = JSON.parse(localStorage.getItem(this.#config.dbName)) || [];
    constructor() {
       window.addEventListener("hashchange", () => {
-         const url = new URL(location.href.replace("#/", ""));
-         this.status = url.searchParams.get("status");
          this.refresher();
       });
    }
