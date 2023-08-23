@@ -72,6 +72,14 @@ export default class App extends Storage {
       event.target.reset();
    };
 
+   onStatusChange = (event) => {
+      if (event.target.checked) {
+         this._updateStatusById(event.target.getAttribute("data-status-id"), "done");
+      } else {
+         this._updateStatusById(event.target.getAttribute("data-status-id"), "pending");
+      }
+   };
+
    routes = async () => {
       let url = new URL(CONFIG.BASE_URL);
       switch (url.pathname) {
@@ -105,14 +113,15 @@ export default class App extends Storage {
       }
       root.innerHTML = this.page;
       /* dom access here */
-      const taskList = document.getElementById("task-container")?.children;
       const form = document.getElementsByTagName("form")[0];
-      form.addEventListener("submit", this.SubmitHandler);
+      const taskList = document.getElementById("task-container")?.children;
+      form?.addEventListener("submit", this.SubmitHandler);
 
       for (let i = 0; i < taskList?.length; i++) {
          const element = taskList[i];
          element?.addEventListener("click", this.DeleteByIdTask);
          element?.addEventListener("click", this.EditHandler);
+         element?.addEventListener("change", this.onStatusChange);
       }
       /* dom access here */
    };

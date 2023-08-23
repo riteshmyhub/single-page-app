@@ -1,34 +1,31 @@
 import toastify from "../functions/toastify.js";
 export default class Storage {
-   #config = Object.freeze({
+   #storageConfig = Object.freeze({
       dbName: "task",
    });
    refresher;
    loading = false;
-   taskList = JSON.parse(localStorage.getItem(this.#config.dbName)) || [];
-   constructor() {
-      window.addEventListener("hashchange", () => {
-         this.refresher();
-      });
-   }
+   taskList = JSON.parse(localStorage.getItem(this.#storageConfig.dbName)) || [];
+
+   constructor() {}
 
    _create = (task) => {
       this.taskList = [...this.taskList, task];
-      localStorage.setItem(this.#config.dbName, JSON.stringify(this.taskList));
+      localStorage.setItem(this.#storageConfig.dbName, JSON.stringify(this.taskList));
       this.refresher();
       toastify(`task successfully created!`);
    };
    //
    _deleteById = (id) => {
       this.taskList = this.taskList.filter((item) => item?.id !== id);
-      localStorage.setItem(this.#config.dbName, JSON.stringify([...this.taskList]));
+      localStorage.setItem(this.#storageConfig.dbName, JSON.stringify([...this.taskList]));
       this.refresher();
       toastify(`task successfully deleted!`);
    };
    //
    _deleteAllList = () => {
       this.taskList = [];
-      localStorage.setItem(this.#config.dbName, JSON.stringify(this.taskList));
+      localStorage.setItem(this.#storageConfig.dbName, JSON.stringify(this.taskList));
       this.refresher();
       toastify(`removed all task!`);
    };
@@ -41,7 +38,7 @@ export default class Storage {
             item.category = task?.category;
          }
       });
-      localStorage.setItem(this.#config.dbName, JSON.stringify([...this.taskList]));
+      localStorage.setItem(this.#storageConfig.dbName, JSON.stringify([...this.taskList]));
       this.refresher();
       toastify(`task successfully update!`);
    };
@@ -52,7 +49,7 @@ export default class Storage {
             item.status = status;
          }
       });
-      localStorage.setItem(this.#config.dbName, JSON.stringify([...this.taskList]));
+      localStorage.setItem(this.#storageConfig.dbName, JSON.stringify([...this.taskList]));
       setTimeout(() => {
          this.refresher();
          toastify(`your task status is ${status}`);
