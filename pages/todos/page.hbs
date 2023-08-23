@@ -3,7 +3,7 @@
     {{#if queryObj.status}}
     <div class="col-12 col-sm-12 col-md-4">
         <div class="p-2">
-            <h2 class="my-2">Create New Task</h2>
+            <h2 class="t-t-u">Create New Task</h2>
             <form data-form-name="">
                 <div class="pb-2">
                     <label role="button" class="my-2 d-block">*category</label>
@@ -36,9 +36,15 @@
     </div>
     <div class="col-12 col-sm-12 col-md-8">
         <div class="p-2">
-            <div class="row">
+            <div class="row center-xy">
+                <div class="col-9">
+                    <h2 class="t-t-u">{{queryObj.status}} Task List</h2>
+                </div>
+                <div class="col-3 text-end">
+                    <button type="button" class="t-t-u p-2">add task</button>
+                </div>
                 <div class="col-12">
-                    <h2 class="my-2 t-t-c">{{queryObj.status}} Task List</h2>
+
                     <ul class="tab-container">
                         <li data-active-link="pending" class="tab list-style-none">
                             <button class="p-1 {{#ifEquals queryObj.status 'all'}}tab-active{{/ifEquals}}"

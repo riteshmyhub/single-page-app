@@ -38,7 +38,6 @@ export default class App extends Storage {
          form.dataset.formName = id;
          this.taskList.forEach((task) => {
             if (task?.id === id) {
-               form.setAttribute("data-form-id", task?.id);
                document.getElementById("title_task").value = task.title_task;
                document.getElementById("discription").value = task.discription;
                if (task.category === "personal") {
