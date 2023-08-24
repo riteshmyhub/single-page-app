@@ -1,12 +1,16 @@
 import CONFIG from "./config.js";
 import hbs from "./functions/hbs.js";
+import homeController from "./pages/home/home.controller.js";
+import todosController from "./pages/todos/todos.controller.js";
+import themesController from "./pages/themes/themes.controller.js";
 import Storage from "./storage/storage.js";
-//import hbs from "./functions/hbs.js";
+
 console.log({
    BASE_URL: CONFIG.BASE_URL,
    VIEW_ENGINE_PAGE: CONFIG.VIEW_ENGINE_PAGE,
    VIEW_ENGINE_PARTIALS: CONFIG.VIEW_ENGINE_PARTIALS,
 });
+
 CONFIG.HASH_ROUTER_INIT();
 
 const root = document.getElementById("root");
@@ -83,31 +87,16 @@ export default class App extends Storage {
       let url = new URL(CONFIG.BASE_URL);
       switch (url.pathname) {
          case "/":
-            this.page = await hbs({
-               path: CONFIG.VIEW_ENGINE_PAGE + "/home/page.hbs",
-               context: {},
-            });
+            this.page = await homeController({});
             break;
          case "/todos":
-            let status = url.searchParams.get("status");
-            this.page = await hbs({
-               path: CONFIG.VIEW_ENGINE_PAGE + "/todos/page.hbs",
-               context: {
-                  loading: this.loading,
-                  tasks: this.taskList?.filter((task) => {
-                     return status === "all" ? true : task.status === status;
-                  }),
-                  queryObj: {
-                     status: url.searchParams.get("status"),
-                  },
-               },
+            this.page = await todosController({
+               loading: this.loading,
+               list: this.taskList,
             });
             break;
          case "/themes":
-            this.page = await hbs({
-               path: CONFIG.VIEW_ENGINE_PAGE + "/themes/page.hbs",
-               context: {},
-            });
+            this.page = await themesController({});
             break;
          default:
             this.page = await hbs({
