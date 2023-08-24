@@ -1,30 +1,29 @@
-<div class="row center-xy p-2 app-card my-2">
-    <div class="col-6">
-        <span>id : {{task.id}}</span>
-    </div>
-    <div class="col-6 text-end">
-        <span class="bg-{{#ifEquals task.category 'personal' }}orange{{else}}violet{{/ifEquals}} text-white px-2 py-1">
-            {{task.category}}
-        </span>
-    </div>
-    <div class="col-9">
-        <span class="d-block my-1">{{task.title_task}}</span>
-        <span class="d-block my-1">{{task.discription}}</span>
-    </div>
-    <div class="col-3">
-        <span class="center-xy">
-            <input class="form-check-input" data-status-id="{{task.id}}" {{#ifEquals task.status 'done'}}checked{{/ifEquals}} type="checkbox" role="switch" id="{{task.id}}">
-            <label class="form-check-label" for="{{task.id}}">
-                &nbsp;{{task.status}}
+<div class="relative p-5">
+    <div class="row items-center justify-between">
+        <div class="col-12 col-md-9">
+            <p class="text-xs text-gray-400">#id {{task.id}}</p>
+            <p class="mb-2 text-2xl tracking-tight text-gray-900">{{task.title_task}}</p>
+            <p class="mb-3 font-normal text-gray-700">{{task.discription}}</p>
+            <button type="button" data-edit-id="{{task.id}}"
+                class="inline-flex items-center px-4 py-1 text-sm text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 cursor-pointer">
+                Edit
+            </button>
+            <button type="button" data-delete-id="{{task.id}}"
+                class="inline-flex items-center px-4 py-1 text-sm text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 cursor-pointer">
+                Remove
+            </button>
+        </div>
+        <div class="col-12 col-md-3 text-end">
+            <label class="relative inline-flex items-center mb-4 cursor-pointer">
+                <input class="sr-only peer" data-status-id="{{task.id}}" {{#ifEquals task.status 'done'}}checked{{/ifEquals}} type="checkbox" role="switch" id="{{task.id}}">
+                <div
+                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                </div>
+                <span class="ml-3 text-sm font-medium text-gray-900">{{task.status}}</span>
             </label>
-        </span>
+        </div>
     </div>
-    <div class="col-12 my-2 text-end">
-        <button type="button" class="p-1" data-edit-id="{{task.id}}">
-            edit
-        </button>
-        <button type="button" class="p-1" data-delete-id="{{task.id}}">
-            delete
-        </button>
-    </div>
+    <span
+        class="bg-purple-800 text-white text-xs font-medium px-3 py-1 rounded-full absolute top-[9px] right-[9px] uppercase">{{task.category}}</span>
 </div>
+<hr class="h-px my-3 bg-gray-200 border-0">

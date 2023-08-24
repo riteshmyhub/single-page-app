@@ -103,6 +103,12 @@ export default class App extends Storage {
                },
             });
             break;
+         case "/themes":
+            this.page = await hbs({
+               path: CONFIG.VIEW_ENGINE_PAGE + "/themes/page.hbs",
+               context: {},
+            });
+            break;
          default:
             this.page = await hbs({
                path: CONFIG.VIEW_ENGINE_PAGE + "/404/page.hbs",
