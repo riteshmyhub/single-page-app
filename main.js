@@ -131,8 +131,9 @@ export default class App extends Storage {
       }
       /* dom access here */
       let theme = JSON.parse(localStorage.getItem("theme"));
+    
       Object.keys(theme).forEach((cssVar) => {
-         document.body.style.setProperty(cssVar, theme[cssVar]);
+         document.documentElement?.style.setProperty(cssVar, theme[cssVar]);
       });
    };
 }
