@@ -2,9 +2,11 @@ import CONFIG from "../../config.js";
 import hbs from "../../functions/hbs.js";
 
 export default async function themesController({}) {
+   const redirectUrl = CONFIG.VIEW_ENGINE_PAGE.replace("/pages", "/#/");
    const template = await hbs({
       path: CONFIG.VIEW_ENGINE_PAGE + "/themes/page.hbs",
       context: {
+         redirectUrl,
          themes: [
             {
                get text() {
