@@ -1,2 +1,18 @@
 {{> Navbar title='themes' }}
-<p>themes page work!</p>
+<div class="flex flex-wrap">
+   {{#each themes as |theme|}}
+   <div class="w-[25%] p-3">
+      <div class="p-3 text-center rounded-lg" style="background-color: {{theme.palette}};">
+         <button class="p-2 uppercase" style="color: {{theme.text}};" onclick="localStorage.setItem('theme',JSON.stringify({
+                  '--theme-level-1': '{{theme.var.p1}}',
+                  '--theme-level-2': '{{theme.var.p2}}',
+                  '--theme-level-3': '{{theme.var.p3}}',
+                  '--theme-level-4': '{{theme.var.p4}}',
+                  '--theme-level-5': '{{theme.var.p5}}',
+            })) || location.replace('/#/')">
+            {{theme.palette}} theme
+         </button>
+      </div>
+   </div>
+   {{/each}}
+</div>

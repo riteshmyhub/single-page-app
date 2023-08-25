@@ -83,6 +83,12 @@ export default class App extends Storage {
       }
    };
 
+   onThemeChange = (event) => {
+      const theme = event.target.dataset?.theme;
+      console.log(theme);
+      //localStorage.setItem("theme", JSON.stringify(new Object(theme)));
+   };
+
    routes = async () => {
       let url = new URL(CONFIG.BASE_URL);
       switch (url.pathname) {
@@ -109,6 +115,7 @@ export default class App extends Storage {
       /* dom access here */
       const form = document.getElementsByTagName("form")[0];
       const taskList = document.getElementById("task-container")?.children;
+      const themeRow = document.getElementById("theme-row")?.children;
       form?.addEventListener("submit", this.SubmitHandler);
 
       for (let i = 0; i < taskList?.length; i++) {
@@ -117,7 +124,16 @@ export default class App extends Storage {
          element?.addEventListener("click", this.EditHandler);
          element?.addEventListener("change", this.onStatusChange);
       }
+
+      for (let i = 0; i < themeRow?.length; i++) {
+         const element = themeRow[i].children[0].children[0];
+         element?.addEventListener("click", this.onThemeChange);
+      }
       /* dom access here */
+      let theme = JSON.parse(localStorage.getItem("theme"));
+      Object.keys(theme).forEach((cssVar) => {
+         document.body.style.setProperty(cssVar, theme[cssVar]);
+      });
    };
 }
 

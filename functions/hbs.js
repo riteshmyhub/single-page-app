@@ -29,11 +29,9 @@ RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/Navbar.hbs`, (res) => {
 RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/TaskCard.hbs`, (res) => {
    Handlebars.registerPartial("TaskCard", res);
 });
-
 RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/Loading.hbs`, (res) => {
    Handlebars.registerPartial("Loading", res);
 });
-
 RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/Alert.hbs`, (res) => {
    Handlebars.registerPartial("Alert", res);
 });
@@ -41,4 +39,8 @@ RegisterPartial(`${CONFIG.VIEW_ENGINE_PARTIALS}/Alert.hbs`, (res) => {
 // ifEquals
 Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+});
+
+Handlebars.registerHelper("asObj", function (context) {
+   return new Object(context);
 });

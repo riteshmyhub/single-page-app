@@ -1,9 +1,9 @@
 <div class="relative p-5">
     <div class="row items-center justify-between">
         <div class="col-12 col-md-9">
-            <p class="text-xs text-gray-400">#id {{task.id}}</p>
-            <p class="mb-2 text-2xl tracking-tight text-gray-900">{{task.title_task}}</p>
-            <p class="mb-3 font-normal text-gray-700">{{task.discription}}</p>
+            <p class="text-xs text-theme-level-5">#id {{task.id}}</p>
+            <p class="mb-2 text-2xl tracking-tight text-theme-level-5">{{task.title_task}}</p>
+            <p class="mb-3 font-normal text-theme-level-5">{{task.discription}}</p>
             <button type="button" data-edit-id="{{task.id}}"
                 class="inline-flex items-center px-4 py-1 text-sm text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 cursor-pointer">
                 Edit
@@ -17,13 +17,13 @@
             <label class="relative inline-flex items-center mb-4 cursor-pointer">
                 <input class="sr-only peer" data-status-id="{{task.id}}" {{#ifEquals task.status 'done'}}checked{{/ifEquals}} type="checkbox" role="switch" id="{{task.id}}">
                 <div
-                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                    class="w-11 h-6 bg-theme-level-3 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-theme-level-3">
                 </div>
-                <span class="ml-3 text-sm font-medium text-gray-900">{{task.status}}</span>
+                <span class="ml-3 text-sm font-medium text-theme-level-5">{{task.status}}</span>
             </label>
         </div>
     </div>
     <span
         class="bg-purple-800 text-white text-xs font-medium px-3 py-1 rounded-full absolute top-[9px] right-[9px] uppercase">{{task.category}}</span>
 </div>
-<hr class="h-px my-3 bg-gray-200 border-0">
+<hr class="h-px my-3 bg-theme-level-3 border-0">

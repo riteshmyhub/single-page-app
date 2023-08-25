@@ -1,31 +1,44 @@
 {{> Navbar title='todos' }}
-<div class="row">
+<div class="row bg-theme-level-1">
     {{#if queryObj.status}}
     <div class="col-12 col-sm-12 col-md-4 p-2">
-        <div class="p-3 border">
-            <h2 class="mb-2 text-2xl tracking-tight text-gray-900 capitalize mb-3">Create New Task</h2>
+        <div class="p-3 bg-theme-level-2">
+            <h2 class="mb-2 text-2xl tracking-tight text-theme-level-5 capitalize mb-3">Create New Task</h2>
             <form data-form-name="">
                 <div class="row pb-2">
-                    <label role="button" class="col-12 block mb-2 text-sm font-medium text-gray-900">*category</label>
-                    <label for="personal" class="col-6 col-md-6 flex items-center pl-4 border border-gray-200 rounded bg-gray-50">
-                        <input type="radio" value="personal" name="category" id="personal"
-                        class="w-5 h-5 text-blue-600 bg-gray-100" required>
-                        <span role="button" class="w-full py-4 ml-2 text-sm font-medium text-gray-900">Personal</span>
-                    </label>
-                    <label for="teams" class="col-6 col-md-6 flex items-center pl-4 border border-gray-200 rounded bg-gray-50">
-                        <input type="radio" value="teams" name="category" id="teams" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300" required>
-                        <span role="button" class="w-full py-4 ml-2 text-sm font-medium text-gray-900">Teams</span>
-                    </label>
+                    <label role="button"
+                        class="col-12 block mb-2 text-sm font-medium text-theme-level-5">*category</label>
+                    <div class="col-6 col-md-6 p-1">
+                        <label for="personal" class="flex items-center pl-4 rounded bg-theme-level-3">
+                            <input type="radio" value="personal" name="category" id="personal"
+                                class="w-5 h-5 text-blue-600 bg-gray-100" required>
+                            <span role="button"
+                                class="w-full py-3 ml-2 text-sm font-medium text-theme-level-5">Personal</span>
+                        </label>
+                    </div>
+                    <div class="col-6 col-md-6 p-1">
+                        <label for="teams"
+                            class="flex items-center pl-4 border-gray-200 rounded bg-theme-level-3">
+                            <input type="radio" value="teams" name="category" id="teams"
+                                class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300" required>
+                            <span role="button"
+                                class="w-full py-3 ml-2 text-sm font-medium text-theme-level-5">Teams</span>
+                        </label>
+                    </div>
                 </div>
                 <div class="py-2">
-                    <label for="title_task" role="button" class="block mb-2 text-sm font-medium text-gray-900">*title task</label>
-                    <input type="text" name="title_task" id="title_task" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="title task"  required>
+                    <label for="title_task" role="button"
+                        class="block mb-2 text-sm font-medium text-theme-level-5">*title task</label>
+                    <input type="text" name="title_task" id="title_task" autocomplete="off"
+                        class="bg-theme-level-3 text-theme-level-5 text-sm rounded-lg focus:ring-blue-500 focus:border-red-500 block w-full p-2.5"
+                        placeholder="title task" required>
                 </div>
                 <div class="py-2">
-                    <label for="discription" role="button" class="block mb-2 text-sm font-medium text-gray-900">*Discription</label>
-                    <textarea name="discription" id="discription" rows="4" autocomplete="off" 
-                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write your task discription here..."
-                        required></textarea>
+                    <label for="discription" role="button"
+                        class="block mb-2 text-sm font-medium text-theme-level-5">*discription</label>
+                    <textarea name="discription" id="discription" rows="4" autocomplete="off"
+                        class="block p-2.5 w-full text-sm bg-theme-level-3 text-theme-level-5 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Write your task discription here..." required></textarea>
                 </div>
                 <div class="py-2">
                     <button type="submit"
@@ -39,33 +52,33 @@
         </div>
     </div>
     <div class="col-12 col-sm-12 col-md-8 p-2">
-        <div class="p-3 border">
+        <div class="p-3 bg-theme-level-2">
             <div class="row center-xy">
                 <div class="col-9">
-                    <h2 class="mb-2 text-2xl tracking-tight text-gray-900 capitalize mb-3">{{queryObj.status}} Task List
+                    <h2 class="mb-2 text-2xl tracking-tight text-theme-level-5 capitalize mb-3">{{queryObj.status}} Task List
                     </h2>
                 </div>
                 <div class="col-3 text-end">
                     <button type="button" class="t-t-u p-2">add task</button>
                 </div>
                 <div class="col-12">
-                    <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200">
+                    <ul class="flex flex-wrap text-sm font-medium text-center text-theme-level-5">
                         <li data-active-link="all" class="tab list-style-none">
                             <button data-active-link="all" aria-current="page"
-                                class="inline-block {{#ifEquals queryObj.status 'all'}}text-blue-600 bg-gray-100{{/ifEquals}} rounded-t-lg uppercase px-7 py-3"
+                                class="inline-block {{#ifEquals queryObj.status 'all'}}text-theme-level-5 bg-theme-level-3{{/ifEquals}} rounded-t-lg uppercase px-7 py-3"
                                 onclick="location.replace('#/todos?status=all')">
                                 all
                             </button>
                         </li>
                         <li data-active-link="pending" class="tab list-style-none">
                             <button aria-current="page" onclick="location.replace('#/todos?status=pending')"
-                                class="inline-block {{#ifEquals queryObj.status 'pending'}}text-blue-600 bg-gray-100{{/ifEquals}} rounded-t-lg uppercase px-7 py-3">
+                                class="inline-block {{#ifEquals queryObj.status 'pending'}}text-theme-level-5 bg-theme-level-3{{/ifEquals}} rounded-t-lg uppercase px-7 py-3">
                                 pending
                             </button>
                         </li>
                         <li data-active-link="pending" class="tab list-style-none">
                             <button onclick="location.replace('#/todos?status=done')" aria-current="page"
-                                class="inline-block {{#ifEquals queryObj.status 'done'}}text-blue-600 bg-gray-100{{/ifEquals}} rounded-t-lg uppercase px-7 py-3">
+                                class="inline-block {{#ifEquals queryObj.status 'done'}}text-theme-level-5 bg-theme-level-3{{/ifEquals}} rounded-t-lg uppercase px-7 py-3">
                                 done
                             </button>
                         </li>
@@ -83,7 +96,7 @@
                     {{/each}}
                 </div>
                 {{else}}
-                <div class="col-12 my-2">
+                <div class="col-12 py-6">
                     {{>Alert message="you don't have task in this status"}}
                 </div>
                 {{/if}}
@@ -92,8 +105,8 @@
         </div>
     </div>
     {{else}}
-    <div class="col-12 col-sm-12">
-         {{>Alert message="task status unavailable"}} 
+    <div class="col-12 col-sm-12 py-6">
+        {{>Alert message="task status unavailable"}}
     </div>
     {{/if}}
 </div>
