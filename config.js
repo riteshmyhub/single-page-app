@@ -8,9 +8,6 @@ const CONFIG = {
          return location.href.replace("/#/", "/");
       }
    },
-   get redirectUrl(){
-      
-   },
    get VIEW_ENGINE_PAGE() {
       if (location.origin === this.PRODUCTION_URL) {
          return `${location.origin}/${this.APP_NAME}/pages`;

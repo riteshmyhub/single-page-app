@@ -84,9 +84,9 @@ export default class App extends Storage {
    };
 
    onThemeChange = (event) => {
-      const theme = event.target.dataset?.theme;
-      console.log(theme);
-      //localStorage.setItem("theme", JSON.stringify(new Object(theme)));
+      const theme = Object.bind({}, event.target.dataset);
+      console.log(event.target.dataset);
+      localStorage.setItem("theme", JSON.stringify(theme));
    };
 
    routes = async () => {
@@ -131,7 +131,7 @@ export default class App extends Storage {
       }
       /* dom access here */
       let theme = JSON.parse(localStorage.getItem("theme"));
-    
+
       Object.keys(theme).forEach((cssVar) => {
          document.documentElement?.style.setProperty(cssVar, theme[cssVar]);
       });
